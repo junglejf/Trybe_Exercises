@@ -1,6 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 
+const Task = (value) => {
+  return (
+    <li>{value}</li>
+  );
+}
 function App() {
   return (
     <div className="App">
@@ -18,6 +23,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <ol className="tasklist">
+        {['varrer quarto', 'pagar conta','lavar roupa', 'estudar', 'responder cliente']
+        .map((task) => Task(task))}
+      </ol>
     </div>
   );
 }
