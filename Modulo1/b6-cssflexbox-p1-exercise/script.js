@@ -11,8 +11,6 @@ function changeFlexDirection(e){
 
 function changeFlexWrap(e){
     let numContainer = document.getElementById('boxNumbers');
-    console.log(e.target.innerHTML);
-    console.log(numContainer);
     numContainer.style.flexWrap = e.target.innerHTML;
 }
 
