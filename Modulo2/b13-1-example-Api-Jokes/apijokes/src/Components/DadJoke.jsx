@@ -15,12 +15,16 @@ class DadJoke extends React.Component {
   }
 
   async fetchJoke() {
+    this.setState ({loading: true },
+    async () => {  
     const requestHeaders = { headers: { Accept: 'application/json' } }
     const requestReturn = await fetch('https://icanhazdadjoke.com/', requestHeaders)
     const requestObject = await requestReturn.json();
     this.setState({
       jokeObj: requestObject,
+      loading: false
     })
+  })
   }
 
   componentDidMount() {
@@ -44,16 +48,16 @@ class DadJoke extends React.Component {
   }
 
   render() {
-    const { storedJokes, jokeObj } = this.state;
+    const { storedJokes, loading } = this.state;
     const loadingElement = <span>Loading...</span>;
-
+    console.log('Renderizou');
     return (
       <div>
         <span>
           {storedJokes.map(({ id, joke }) => (<p key={id}>{joke}</p>))}
         </span>
 
-      <p>{jokeObj ? this.renderJokeElement() : loadingElement}</p>
+      <p>{loading ? loadingElement : this.renderJokeElement() }</p>
       </div>
     );
   }
