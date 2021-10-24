@@ -1,0 +1,4 @@
+SELECT * 
+FROM Projects
+ORDER BY HOURS
+LIMIT 5;
